@@ -25,6 +25,7 @@ public class Menu {
             System.out.println("5. Toplam Hesap Sayısı");
             System.out.println("6 - Varlıklarım / Borçlarım");
             System.out.println("7 - Son İşlemler");
+            System.out.println("8 - Fatura Ödeme");
             System.out.println("0. Çıkış");
             System.out.print("Seçiminiz: ");
             int secim;
@@ -79,7 +80,42 @@ public class Menu {
 
                 }
                case 7 -> aktifHesap.sonIslemler();
+                case 8 -> {
+                    System.out.println("Ödenecek fatura miktarını girin: ");
+                    if (input.hasNextDouble()) {
+                        double faturaMiktar = input.nextDouble();
+                        input.nextLine();
 
+                        System.out.println("Fatura türünü seçin:");
+                        System.out.println("1. Elektrik");
+                        System.out.println("2. Su");
+                        System.out.println("3. İnternet");
+                        System.out.println("4. TV");
+                        System.out.print("Seçiminiz: ");
+                        int faturaSecim = input.nextInt();
+                        input.nextLine();
+
+                        Fatura_Odeme fatura = null;
+                        switch (faturaSecim) {
+                            case 1 -> fatura = new Elektirik();
+                            case 2 -> fatura = new Su();
+                            case 3 -> fatura = new İnternet();
+                            case 4 -> fatura = new TV();
+                            case 5 -> fatura = new DogalGaz();
+                            case 6 -> fatura = new Telefon();
+                            default -> {
+                                System.out.println("Geçersiz seçim!");
+                                continue;
+                            }
+                        }
+                        if (fatura != null) {
+                            fatura.odeme(faturaMiktar, aktifHesap);
+                        }
+                    } else {
+                        System.out.println("Geçersiz miktar!");
+                        input.nextLine();
+                    }
+                }
                 case 0 -> {
                     System.out.println("Çıkış yapılıyor...");
                     devam = false;
