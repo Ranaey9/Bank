@@ -3,9 +3,9 @@ package banka;
 public class Kredi_Hesaplama extends BankaHesabi implements Kredi_İslemleri {
     private double krediBorc;
 
-    public Kredi_Hesaplama(String isim, String soyad, String tcNo, String telefon,
+    public Kredi_Hesaplama(String isim, String soyad, String tcNo,
             String email, String sifre, String hesapNo, double bakiye) {
-        super(isim, soyad, tcNo, telefon, email, sifre, hesapNo, bakiye);
+        super(isim, soyad, tcNo, email, sifre, hesapNo, bakiye);
         this.krediBorc = 0.0;
     }
 
